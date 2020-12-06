@@ -1,0 +1,36 @@
+@import '../libs.less';
+
+#app {
+  height: 100%;
+
+  .search-form {
+    margin-bottom: 4px;
+
+    .ant-form-item {
+      margin-bottom: 16px;
+    }
+  }
+
+  .list-price {
+    text-align: center;
+
+    div:last-child {
+      text-decoration: line-through;
+    }
+  }
+}
+
+.text-two-rows {
+  width: 150px;
+  display: -webkit-box; /*将对象转为弹性盒模型展示*/
+  -webkit-box-orient: vertical; /*设置弹性盒模型子元素的排列方式*/
+  -webkit-line-clamp: 2; /*限制文本行数*/
+  overflow: hidden; /*超出隐藏*/
+}
+
+.ant-modal-root {
+  .ant-modal-mask,
+  .ant-modal-wrap {
+    z-index: 20000;
+  }
+}
