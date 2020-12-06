@@ -1,5 +1,5 @@
 {
-  "name": "mooc-cs",
+  "name": "zaifumo-react-webpack",
   "version": "1.0.0",
   "description": "",
   "main": "''",
@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://192.168.2.4:8080/tfs/ljshell/_git/mooc"
+    "url": "https://github.com/zaifumo/zaifumo-react-webpack"
   },
   "author": "kecoyo",
   "license": "MIT",
-  "homepage": "http://192.168.2.4:8080/tfs/ljshell/_git/mooc#readme",
+  "homepage": "https://github.com/zaifumo/zaifumo-react-webpack#readme",
   "dependencies": {
     "antd": "^4.7.3",
     "axios": "^0.21.0",
