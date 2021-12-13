@@ -1,11 +1,9 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { Layout, Menu, Avatar, Dropdown } from 'antd';
 import { HomeOutlined, UserOutlined, AppstoreOutlined, DownOutlined } from '@ant-design/icons';
 
 import styles from './index.less';
-
-import Router from './router';
-import { Control } from 'react-keeper';
 
 const { Header, Sider, Content } = Layout;
 
@@ -18,16 +16,20 @@ class MainFrame extends React.PureComponent {
   }
 
   sliderMenus = [
-    { key: '/', name: '首页', icon: <HomeOutlined /> }, //
+    { key: '/', name: '首页2', icon: <HomeOutlined /> }, //
     { key: '/banner', name: '焦点图管理', icon: <AppstoreOutlined /> },
   ];
 
   onMenuItemClick = (e) => {
     const activeKey = e.key;
-    this.setState({
-      activeKey,
-    });
-    Control.go(activeKey);
+    // this.setState({
+    //   activeKey,
+    // });
+
+    // let navigate = useNavigate();
+    // console.log('🚀 ~ MainFrame ~ navigate', navigate);
+    // history.push(activeKey);
+    location.hash = activeKey;
   };
 
   renderUserMenu = () => {
@@ -40,6 +42,7 @@ class MainFrame extends React.PureComponent {
 
   render() {
     const { activeKey } = this.state;
+    console.log('🚀 ~ MainFrame ~ render ~ this.props', this.props);
     return (
       <Layout className={styles.layout}>
         <Header className={styles.header}>
@@ -65,7 +68,7 @@ class MainFrame extends React.PureComponent {
             </Menu>
           </Sider>
           <Content className={styles.content}>
-            <Router />
+            <Outlet />
           </Content>
         </Layout>
       </Layout>

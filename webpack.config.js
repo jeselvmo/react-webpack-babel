@@ -1,16 +1,12 @@
-/* eslint-disable indent,import/no-extraneous-dependencies */
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const config = require('./config');
 
-const prod = process.env.NODE_ENV === 'production';
-
 const webpackConfig = {
-  mode: prod ? 'production' : 'development',
+  // mode: prod ? 'production' : 'development',
   devtool: 'cheap-module-source-map',
   entry: [
     './src/index.jsx', // your app's entry point
@@ -38,12 +34,7 @@ const webpackConfig = {
           babelrc: false,
           presets: ['@babel/preset-env', '@babel/preset-react'],
           plugins: [
-            '@babel/transform-runtime',
-            '@babel/plugin-syntax-dynamic-import',
-            '@babel/plugin-transform-async-to-generator',
-            '@babel/plugin-proposal-object-rest-spread',
-            ['@babel/plugin-proposal-decorators', { legacy: true }],
-            ['@babel/plugin-proposal-class-properties', { loose: true }],
+            ['@babel/plugin-transform-runtime'], //
             ['import', { libraryName: 'antd', style: true }],
           ],
         },
@@ -54,12 +45,36 @@ const webpackConfig = {
       },
       {
         test: /\.less$/,
-        include: [path.resolve(__dirname, 'src/styles')],
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+        include: /(antd|antd-mobile)/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+                modifyVars: {
+                  'primary-color': '#409eff',
+                  'link-color': '#409eff',
+                  'border-radius-base': '4px',
+                },
+              },
+            },
+          },
+        ],
       },
+      // {
+      //   test: /\.less$/,
+      //   include: [path.resolve(__dirname, 'src/styles')],
+      //   use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+      // },
       {
         test: /\.less$/,
-        include: [path.resolve(__dirname, 'src/components'), path.resolve(__dirname, 'src/pages')],
+        // include: [path.resolve(__dirname, 'src')],
+        // exclude: [path.resolve(__dirname, 'src/styles')],
+        exclude: /(antd|antd-mobile)/,
         use: [
           'style-loader',
           {
@@ -77,23 +92,6 @@ const webpackConfig = {
         ],
       },
       {
-        test: /\.less$/,
-        include: /(antd|antd-mobile)/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'less-loader',
-            options: {
-              lessOptions: {
-                javascriptEnabled: true,
-                modifyVars: config.theme,
-              },
-            },
-          },
-        ],
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: ['file-loader?limit=1024&name=[hash].[ext]&outputPath=images/'],
       },
@@ -104,37 +102,45 @@ const webpackConfig = {
     ],
   },
   devServer: {
-    contentBase: './public',
-    noInfo: true,
-    inline: true,
-    historyApiFallback: true,
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    allowedHosts: 'all', // 'auto' | 'all' [string]
+    client: {
+      logging: 'log', // 'log' | 'info' | 'warn' | 'error' | 'none' | 'verbose'
+      overlay: true,
+      progress: true,
+    },
+    compress: true,
     hot: true,
-    overlay: true,
-    disableHostCheck: true,
-    ...config.devServer,
+    host: '0.0.0.0',
+    port: '3050',
+    proxy: [
+      {
+        context: ['/cc'],
+        // target: 'http://172.16.0.14:17545',
+        target: 'https://cs.ljlx.com/api/',
+        secure: false,
+        changeOrigin: true,
+      },
+      {
+        context: ['/Net'],
+        target: 'https://cs.ljlx.com/api/',
+        secure: false,
+        changeOrigin: true,
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`,
-    }),
-    new CopyWebpackPlugin([{ from: 'static' }]),
+    new CopyWebpackPlugin({ patterns: [{ from: 'static' }] }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './src/template.html',
+      template: './src/index.html',
       title: config.title,
       inject: true,
     }),
-  ].concat(
-    prod
-      ? []
-      : [
-          // Development only plugins
-          new webpack.HotModuleReplacementPlugin(),
-          // Catch errors with style
-          new ErrorOverlayPlugin(),
-        ]
-  ),
+  ],
 };
 
 module.exports = webpackConfig;

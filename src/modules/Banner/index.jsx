@@ -2,13 +2,14 @@ import React from 'react';
 
 import styles from './index.less';
 
+import withRouter from '@/common/withRouter';
 import Page from '@/components/Page';
 import PlayIcon from '@/components/PlayIcon';
 
 /**
  * 焦点图管理
  */
-class Home extends React.PureComponent {
+class Banner extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -18,11 +19,11 @@ class Home extends React.PureComponent {
 
   render() {
     return (
-      <Page title="首页">
+      <Page title="焦点图管理">
         <PlayIcon />
       </Page>
     );
   }
 }
 
-export default Home;
+export default withRouter(Banner);

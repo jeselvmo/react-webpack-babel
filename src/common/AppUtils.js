@@ -1,13 +1,8 @@
-/* eslint-disable no-param-reassign */
 import { message } from 'antd';
 import config from '../../config';
 import Loading from '@/components/Loading';
 
 const AppUtils = {
-  /**
-   * 初始化
-   */
-  init() {},
   /**
    * 获取配置
    */
@@ -105,5 +100,4 @@ const AppUtils = {
   },
 };
 
-window.AppUtils = AppUtils;
 export default AppUtils;

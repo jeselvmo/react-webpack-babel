@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorBoundary from '@/containers/ErrorBoundary';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 /*
  * Higher Order Component to provide error boundary for wrapped component.

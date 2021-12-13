@@ -1,6 +1,4 @@
 // PostCss
-const autoprefixer = require('autoprefixer');
-
 module.exports = {
-  plugins: [autoprefixer()],
+  plugins: [['postcss-preset-env', {}]],
 };

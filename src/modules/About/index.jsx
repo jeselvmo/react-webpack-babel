@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './index.less';
 
+import withRouter from '@/common/withRouter';
 import Page from '@/components/Page';
 import PlayIcon from '@/components/PlayIcon';
 
@@ -18,11 +19,11 @@ class Banner extends React.PureComponent {
 
   render() {
     return (
-      <Page title="焦点图管理">
+      <Page title="About">
         <PlayIcon />
       </Page>
     );
   }
 }
 
-export default Banner;
+export default withRouter(Banner);

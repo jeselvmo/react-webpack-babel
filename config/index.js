@@ -7,6 +7,6 @@ if (process.env.NODE_ENV === 'production') {
   Object.assign(config, development, production);
 }
 
-// console.log('config:', config);
+console.log('config:', config);
 
 module.exports = config;

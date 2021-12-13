@@ -1,19 +1,18 @@
 import React from 'react';
-import { compose } from 'redux';
+import { HashRouter } from 'react-router-dom';
+import AppView from './modules';
+import AppUtils from '@/common/AppUtils';
+import './styles/index.less';
 
-import App from '@/pages/App';
-import AppStateHOC from '@/common/AppStateHOC';
-import QueryParserHOC from '@/common/QueryParserHOC';
-import AntdLocaleHOC from '@/common/AntdLocaleHOC';
-import ErrorBoundaryHOC from '@/common/ErrorBoundaryHOC';
-import InitUserInfoHOC from '@/common/InitUserInfoHOC';
+window.AppUtils = AppUtils;
+console.log('🚀 ~ AppUtils', AppUtils);
 
-const WrappedApp = compose(
-  AppStateHOC, //
-  QueryParserHOC,
-  AntdLocaleHOC,
-  ErrorBoundaryHOC('Top Level App'),
-  InitUserInfoHOC
-)(App);
+const App = () => (
+  <React.StrictMode>
+    <HashRouter>
+      <AppView />
+    </HashRouter>
+  </React.StrictMode>
+);
 
-export default WrappedApp;
+export default App;

@@ -1,1 +1,1 @@
-# zaifumo-react-webpack
+# react-webpack-babel
