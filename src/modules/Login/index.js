@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import styles from './index.less';
 
@@ -6,7 +6,6 @@ import Page from '@/components/Page';
 import PlayIcon from '@/components/PlayIcon';
 import { Button } from 'antd';
 import withRouter from '@/common/withRouter';
-
 /**
  * 焦点图管理
  */
@@ -17,11 +16,11 @@ class Login extends React.PureComponent {
   }
 
   onLogin = () => {
-    console.log('🚀 ~ Login ~ this.props', this.props);
     this.props.navigate('/about');
   };
 
   render() {
+    console.log('🚀 ~ Login ~ render ~ this.props', this.props);
     return (
       <Page title="Login">
         <div>

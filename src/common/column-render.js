@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image, Avatar } from 'antd';
-import { COURSE_IMAGE_RATIO } from '@/constants/Common';
 import { GRADE } from '@/common/Enum';
 
 export default {
@@ -14,7 +13,7 @@ export default {
       </div>
     );
   },
-  renderImage(text, width = 120, height = width * COURSE_IMAGE_RATIO) {
+  renderImage(text, width = 120, height) {
     return <Image src={text} width={width} height={height} preview={true} />;
   },
   renderGrades(text = [], width) {

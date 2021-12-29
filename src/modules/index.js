@@ -6,7 +6,6 @@ import Page from '@/components/Page';
 import AppStateHOC from './hocs/AppStateHOC';
 import QueryParserHOC from './hocs/QueryParserHOC';
 import AntdLocaleHOC from './hocs/AntdLocaleHOC';
-import ErrorBoundaryHOC from './hocs/ErrorBoundaryHOC';
 import InitUserInfoHOC from './hocs/InitUserInfoHOC';
 
 import Layout from './Layout';
@@ -33,7 +32,6 @@ const WrappedAppView = compose(
   AppStateHOC, //
   QueryParserHOC,
   AntdLocaleHOC,
-  ErrorBoundaryHOC('Top Level App'),
   InitUserInfoHOC
 )(AppView);
 

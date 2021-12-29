@@ -9,7 +9,7 @@ const webpackConfig = {
   // mode: prod ? 'production' : 'development',
   devtool: 'cheap-module-source-map',
   entry: [
-    './src/index.jsx', // your app's entry point
+    './src/index.js', // your app's entry point
   ],
   output: {
     publicPath: config.publicPath,

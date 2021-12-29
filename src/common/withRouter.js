@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
-import React from 'react';
+import React, { useContext } from 'react';
+import { UNSAFE_NavigationContext } from 'react-router';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 /**
@@ -10,6 +11,8 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
  */
 const withRouter = (ELement) => {
   return () => {
+    const aaa = useContext(UNSAFE_NavigationContext);
+    console.log('🚀 ~ return ~ aaa', aaa);
     const navigate = useNavigate();
     const location = useLocation();
     const params = useParams();

@@ -5,6 +5,8 @@ import { HomeOutlined, UserOutlined, AppstoreOutlined, DownOutlined } from '@ant
 
 import styles from './index.less';
 
+import withRouter from '@/common/withRouter';
+
 const { Header, Sider, Content } = Layout;
 
 class MainFrame extends React.PureComponent {
@@ -29,7 +31,10 @@ class MainFrame extends React.PureComponent {
     // let navigate = useNavigate();
     // console.log('🚀 ~ MainFrame ~ navigate', navigate);
     // history.push(activeKey);
-    location.hash = activeKey;
+    // location.hash = activeKey;
+
+    console.log('🚀 ~ MainFrame ~ activeKey', activeKey);
+    this.props.navigate(activeKey);
   };
 
   renderUserMenu = () => {
@@ -76,4 +81,4 @@ class MainFrame extends React.PureComponent {
   }
 }
 
-export default MainFrame;
+export default withRouter(MainFrame);
