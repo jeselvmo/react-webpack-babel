@@ -1,9 +1,7 @@
 const path = require('path');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const config = require('./config');
 
 const webpackConfig = {
   // mode: prod ? 'production' : 'development',
@@ -12,7 +10,6 @@ const webpackConfig = {
     './src/index.js', // your app's entry point
   ],
   output: {
-    publicPath: config.publicPath,
     path: path.join(__dirname, 'public'),
     filename: 'js/[name].[hash:8].js',
     chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
@@ -133,12 +130,8 @@ const webpackConfig = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({ patterns: [{ from: 'static' }] }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
       template: './src/index.html',
-      title: config.title,
-      inject: true,
     }),
   ],
 };

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+// import { Outlet } from 'react-router-dom';
 import { Layout, Menu, Avatar, Dropdown } from 'antd';
 import { HomeOutlined, UserOutlined, AppstoreOutlined, DownOutlined } from '@ant-design/icons';
 
 import styles from './index.less';
 
-import withRouter from '@/common/withRouter';
+import routerHistory from '@/common/routerHistory';
+import router from './router';
 
 const { Header, Sider, Content } = Layout;
 
@@ -18,23 +19,14 @@ class MainFrame extends React.PureComponent {
   }
 
   sliderMenus = [
-    { key: '/', name: '首页2', icon: <HomeOutlined /> }, //
+    { key: '/dashboard', name: '首页2', icon: <HomeOutlined /> }, //
     { key: '/banner', name: '焦点图管理', icon: <AppstoreOutlined /> },
+    { key: '/about', name: '焦点图管理', icon: <AppstoreOutlined /> },
   ];
 
   onMenuItemClick = (e) => {
     const activeKey = e.key;
-    // this.setState({
-    //   activeKey,
-    // });
-
-    // let navigate = useNavigate();
-    // console.log('🚀 ~ MainFrame ~ navigate', navigate);
-    // history.push(activeKey);
-    // location.hash = activeKey;
-
-    console.log('🚀 ~ MainFrame ~ activeKey', activeKey);
-    this.props.navigate(activeKey);
+    routerHistory.push(activeKey);
   };
 
   renderUserMenu = () => {
@@ -46,12 +38,12 @@ class MainFrame extends React.PureComponent {
   };
 
   render() {
+    // const { children } = this.props;
     const { activeKey } = this.state;
-    console.log('🚀 ~ MainFrame ~ render ~ this.props', this.props);
     return (
       <Layout className={styles.layout}>
         <Header className={styles.header}>
-          <div className={styles.logo}>{AppUtils.config('title')}</div>
+          <div className={styles.logo}>react-webpack-babel</div>
           <div className={styles.userInfo}>
             <Avatar icon={<UserOutlined />} />
             <Dropdown overlay={this.renderUserMenu()} trigger={['click']}>
@@ -72,13 +64,11 @@ class MainFrame extends React.PureComponent {
               ))}
             </Menu>
           </Sider>
-          <Content className={styles.content}>
-            <Outlet />
-          </Content>
+          <Content className={styles.content}>{router()}</Content>
         </Layout>
       </Layout>
     );
   }
 }
 
-export default withRouter(MainFrame);
+export default MainFrame;

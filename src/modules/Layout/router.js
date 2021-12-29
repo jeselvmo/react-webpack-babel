@@ -1,16 +1,17 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Dashboard from '@/modules/Dashboard';
 import Banner from '@/modules/Banner';
+import About from '@/modules/About';
 
 const router = (props) => {
-  console.log('🚀 ~ router ~ props', props);
   return (
-    <Routes>
-      <Route path="dashboard" element={<Dashboard />} />
-      <Route path="banner" element={<Banner />} />
-    </Routes>
+    <Switch>
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/banner" component={Banner} />
+      <Route path="/about" component={About} />
+    </Switch>
   );
 };
 

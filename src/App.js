@@ -1,19 +1,18 @@
 import React from 'react';
-import { HashRouter as Router } from 'react-router-dom';
-import AppUtils from '@/common/AppUtils';
+import { HashRouter } from 'react-router-dom';
 
 import './styles/index.less';
 
 import AppView from './modules';
+import AppUtils from '@/common/AppUtils';
 
 window.AppUtils = AppUtils;
-console.log('🚀 ~ AppUtils', AppUtils);
 
 const App = () => (
   <React.StrictMode>
-    <Router>
+    <HashRouter>
       <AppView />
-    </Router>
+    </HashRouter>
   </React.StrictMode>
 );
 

@@ -1,18 +1,7 @@
 import { message } from 'antd';
-import config from '../../config';
 import Loading from '@/components/Loading';
 
 const AppUtils = {
-  /**
-   * 获取配置
-   */
-  config(name) {
-    if (name) {
-      return config[name];
-    }
-    return config;
-  },
-
   success(msg) {
     message.success(msg);
   },

@@ -4,7 +4,7 @@ import AppUtils from '@/common/AppUtils';
 
 // 创建一个新的axios
 const instance = axios.create({
-  baseURL: AppUtils.config('baseURL'),
+  // baseURL: AppUtils.config('baseURL'),
 });
 
 // Axios请求拦截处理

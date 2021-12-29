@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { Button } from 'antd';
 
 import styles from './index.less';
 
 import Page from '@/components/Page';
 import PlayIcon from '@/components/PlayIcon';
-import { Button } from 'antd';
-import withRouter from '@/common/withRouter';
+import routerHistory from '@/common/routerHistory';
+
 /**
  * 焦点图管理
  */
@@ -16,11 +17,10 @@ class Login extends React.PureComponent {
   }
 
   onLogin = () => {
-    this.props.navigate('/about');
+    routerHistory.push('/about');
   };
 
   render() {
-    console.log('🚀 ~ Login ~ render ~ this.props', this.props);
     return (
       <Page title="Login">
         <div>
@@ -32,4 +32,4 @@ class Login extends React.PureComponent {
   }
 }
 
-export default withRouter(Login);
+export default Login;
