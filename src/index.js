@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './modules';
 
-const renderApp = (Component) => {
-  ReactDOM.render(<Component />, document.getElementById('app'));
-};
+/** 公共样式 **/
+import './styles/index.less';
 
-renderApp(App);
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('app')
+);
 
-// Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    renderApp(require('./App').default);
-  });
+  module.hot.accept();
 }

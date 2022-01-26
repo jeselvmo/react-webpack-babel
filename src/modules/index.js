@@ -1,28 +1,25 @@
 import React from 'react';
 import { compose } from 'redux';
-import { Switch, Route } from 'react-router-dom';
-import Page from '@/components/Page';
+import { HashRouter } from 'react-router-dom';
 
+import Routes from './routes';
 import AppStateHOC from './hocs/AppStateHOC';
 import QueryParserHOC from './hocs/QueryParserHOC';
 import AntdLocaleHOC from './hocs/AntdLocaleHOC';
 import InitUserInfoHOC from './hocs/InitUserInfoHOC';
+import AppUtils from '@/common/AppUtils';
 
-import Layout from './Layout';
-import Login from './Login';
+window.AppUtils = AppUtils;
 
-const AppView = () => (
-  <Switch>
-    <Route path="/" component={Layout} exact />
-    <Route path="/login" component={Login} />
-  </Switch>
+const App = () => (
+  <HashRouter>
+    <Routes />
+  </HashRouter>
 );
 
-const WrappedAppView = compose(
+export default compose(
   AppStateHOC, //
   QueryParserHOC,
   AntdLocaleHOC,
   InitUserInfoHOC
-)(AppView);
-
-export default WrappedAppView;
+)(App);

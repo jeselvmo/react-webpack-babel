@@ -1,16 +1,16 @@
 import React from 'react';
-// import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Layout, Menu, Avatar, Dropdown } from 'antd';
 import { HomeOutlined, UserOutlined, AppstoreOutlined, DownOutlined } from '@ant-design/icons';
 
 import styles from './index.less';
 
+import withRouter from '@/common/withRouter';
 import routerHistory from '@/common/routerHistory';
-import router from './router';
 
 const { Header, Sider, Content } = Layout;
 
-class MainFrame extends React.PureComponent {
+class MainLayout extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,19 +26,21 @@ class MainFrame extends React.PureComponent {
 
   onMenuItemClick = (e) => {
     const activeKey = e.key;
-    routerHistory.push(activeKey);
+    console.log('🚀 ~ MainLayout ~ this.props', this.props);
+    this.props.navigate(activeKey);
   };
 
   renderUserMenu = () => {
     return (
       <Menu>
-        <Menu.Item key="1">退出</Menu.Item>
+        <Menu.Item key="1" onClick={() => this.props.navigate('/login')}>
+          退出
+        </Menu.Item>
       </Menu>
     );
   };
 
   render() {
-    // const { children } = this.props;
     const { activeKey } = this.state;
     return (
       <Layout className={styles.layout}>
@@ -64,11 +66,13 @@ class MainFrame extends React.PureComponent {
               ))}
             </Menu>
           </Sider>
-          <Content className={styles.content}>{router()}</Content>
+          <Content className={styles.content}>
+            <Outlet />
+          </Content>
         </Layout>
       </Layout>
     );
   }
 }
 
-export default MainFrame;
+export default withRouter(MainLayout);
