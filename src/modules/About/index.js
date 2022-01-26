@@ -2,7 +2,6 @@ import React from 'react';
 
 import styles from './index.less';
 
-import withRouter from '@/common/withRouter';
 import Page from '@/components/Page';
 import PlayIcon from '@/components/PlayIcon';
 
@@ -26,4 +25,4 @@ class Banner extends React.PureComponent {
   }
 }
 
-export default withRouter(Banner);
+export default Banner;

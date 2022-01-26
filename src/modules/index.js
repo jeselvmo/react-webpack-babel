@@ -1,25 +1,23 @@
 import React from 'react';
-import { compose } from 'redux';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/es/locale/zh_CN';
 
 import Routes from './routes';
-import AppStateHOC from './hocs/AppStateHOC';
-import QueryParserHOC from './hocs/QueryParserHOC';
-import AntdLocaleHOC from './hocs/AntdLocaleHOC';
-import InitUserInfoHOC from './hocs/InitUserInfoHOC';
+import store from '../store';
 import AppUtils from '@/common/AppUtils';
 
 window.AppUtils = AppUtils;
 
 const App = () => (
-  <HashRouter>
-    <Routes />
-  </HashRouter>
+  <Provider store={store}>
+    <ConfigProvider locale={zhCN}>
+      <Router>
+        <Routes />
+      </Router>
+    </ConfigProvider>
+  </Provider>
 );
 
-export default compose(
-  AppStateHOC, //
-  QueryParserHOC,
-  AntdLocaleHOC,
-  InitUserInfoHOC
-)(App);
+export default App;

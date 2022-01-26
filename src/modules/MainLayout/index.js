@@ -1,12 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Layout, Menu, Avatar, Dropdown } from 'antd';
 import { HomeOutlined, UserOutlined, AppstoreOutlined, DownOutlined } from '@ant-design/icons';
+import _ from 'lodash';
 
 import styles from './index.less';
 
-import withRouter from '@/common/withRouter';
-import routerHistory from '@/common/routerHistory';
+import router from '@/common/router';
 
 const { Header, Sider, Content } = Layout;
 
@@ -27,13 +28,17 @@ class MainLayout extends React.PureComponent {
   onMenuItemClick = (e) => {
     const activeKey = e.key;
     console.log('🚀 ~ MainLayout ~ this.props', this.props);
-    this.props.navigate(activeKey);
+    router.navigate(activeKey + '?id=1', {
+      state: {
+        type: 2,
+      },
+    });
   };
 
   renderUserMenu = () => {
     return (
       <Menu>
-        <Menu.Item key="1" onClick={() => this.props.navigate('/login')}>
+        <Menu.Item key="1" onClick={() => router.navigate('/login')}>
           退出
         </Menu.Item>
       </Menu>
@@ -42,6 +47,8 @@ class MainLayout extends React.PureComponent {
 
   render() {
     const { activeKey } = this.state;
+    const { userInfo } = this.props;
+    console.log('🚀 ~ MainLayout ~ render ~ userInfo', userInfo);
     return (
       <Layout className={styles.layout}>
         <Header className={styles.header}>
@@ -50,7 +57,7 @@ class MainLayout extends React.PureComponent {
             <Avatar icon={<UserOutlined />} />
             <Dropdown overlay={this.renderUserMenu()} trigger={['click']}>
               <div className={styles.userName}>
-                <span>admin</span>
+                <span>{_.get(userInfo, 'name')}</span>
                 <DownOutlined />
               </div>
             </Dropdown>
@@ -75,4 +82,10 @@ class MainLayout extends React.PureComponent {
   }
 }
 
-export default withRouter(MainLayout);
+const mapStateToProps = (state) => ({
+  userInfo: state.user.info,
+});
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainLayout);

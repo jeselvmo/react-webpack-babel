@@ -1,12 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Button, Space } from 'antd';
 
 import styles from './index.less';
 
-import withRouter from '@/common/withRouter';
+import router from '@/common/router';
 import Page from '@/components/Page';
 import PlayIcon from '@/components/PlayIcon';
-import routerHistory from '@/common/routerHistory';
+import { setUserInfo } from '@/store/reducers/user';
 
 /**
  * 焦点图管理
@@ -18,7 +19,11 @@ class Login extends React.PureComponent {
   }
 
   onLogin = () => {
-    this.props.navigate('/');
+    this.props.onSetUserInfo({
+      id: 1,
+      name: 'admin',
+    });
+    router.navigate('/');
   };
 
   render() {
@@ -37,4 +42,12 @@ class Login extends React.PureComponent {
   }
 }
 
-export default withRouter(Login);
+const mapStateToProps = (state) => ({
+  userInfo: state.user.info,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSetUserInfo: (userInfo) => dispatch(setUserInfo(userInfo)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
