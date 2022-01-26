@@ -1,15 +1,14 @@
+import produce from 'immer';
+
 const initialState = {};
 
-const reducer = (state = initialState, action) => {
+const reducer = produce((state, action) => {
   switch (action.type) {
     default: {
       break;
     }
   }
   return state;
-};
+}, initialState);
 
-export {
-  reducer as default, //
-  initialState as homeInitialState,
-};
+export { reducer as default, initialState as homeInitialState };

@@ -19,6 +19,7 @@ module.exports = {
   plugins: ['import', 'react'],
   rules: {
     'no-console': 1,
+    'react/prop-types': 0,
   },
   settings: {
     'import/resolver': 'webpack',

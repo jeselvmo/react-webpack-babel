@@ -8,6 +8,7 @@ import _ from 'lodash';
 import styles from './index.less';
 
 import router from '@/common/router';
+import { clearUserInfo } from '@/store/reducers/user';
 
 const { Header, Sider, Content } = Layout;
 
@@ -35,10 +36,15 @@ class MainLayout extends React.PureComponent {
     });
   };
 
+  onLogoff = () => {
+    this.props.onClearUserInfo();
+    router.navigate('/login');
+  };
+
   renderUserMenu = () => {
     return (
       <Menu>
-        <Menu.Item key="1" onClick={() => router.navigate('/login')}>
+        <Menu.Item key="1" onClick={this.onLogoff}>
           退出
         </Menu.Item>
       </Menu>
@@ -86,6 +92,8 @@ const mapStateToProps = (state) => ({
   userInfo: state.user.info,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  onClearUserInfo: () => dispatch(clearUserInfo()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainLayout);
