@@ -26,11 +26,11 @@ class ErrorBoundary extends React.PureComponent {
     });
   }
 
-  handleBack() {}
+  handleBack = () => {};
 
-  handleReload() {
+  handleReload = () => {
     window.location.reload();
-  }
+  };
 
   render() {
     const { hasError, error } = this.state;

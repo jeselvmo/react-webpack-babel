@@ -5,14 +5,20 @@ import { Layout, Menu, Avatar, Dropdown } from 'antd';
 import { HomeOutlined, UserOutlined, AppstoreOutlined, DownOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 
-import styles from './index.less';
-
 import router from '@/common/router';
 import { clearUserInfo } from '@/store/reducers/user';
+
+import styles from './index.less';
 
 const { Header, Sider, Content } = Layout;
 
 class MainLayout extends React.PureComponent {
+  sliderMenus = [
+    { key: '/dashboard', name: '首页2', icon: <HomeOutlined /> }, //
+    { key: '/banner', name: '焦点图管理', icon: <AppstoreOutlined /> },
+    { key: '/about', name: '焦点图管理', icon: <AppstoreOutlined /> },
+  ];
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,16 +26,10 @@ class MainLayout extends React.PureComponent {
     };
   }
 
-  sliderMenus = [
-    { key: '/dashboard', name: '首页2', icon: <HomeOutlined /> }, //
-    { key: '/banner', name: '焦点图管理', icon: <AppstoreOutlined /> },
-    { key: '/about', name: '焦点图管理', icon: <AppstoreOutlined /> },
-  ];
-
   onMenuItemClick = (e) => {
     const activeKey = e.key;
     console.log('🚀 ~ MainLayout ~ this.props', this.props);
-    router.navigate(activeKey + '?id=1', {
+    router.navigate(`${activeKey}?id=1`, {
       state: {
         type: 2,
       },

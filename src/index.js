@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './modules';
 
-/** 公共样式 **/
+/* 公共样式 */
 import './styles/index.less';
 
 ReactDOM.render(

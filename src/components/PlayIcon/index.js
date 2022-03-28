@@ -28,14 +28,7 @@ class PlayIcon extends React.PureComponent {
 
   render() {
     const { className } = this.props;
-    return (
-      <object
-        className={classNames(styles.playIcon, className)} //
-        type="image/svg+xml"
-        data={playIcon}
-        onLoad={this.onSvgLoad}
-      />
-    );
+    return <object className={classNames(styles.playIcon, className)} type="image/svg+xml" data={playIcon} onLoad={this.onSvgLoad} />;
   }
 }
 

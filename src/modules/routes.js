@@ -17,7 +17,8 @@ const routes = [
 ];
 
 // 路由处理方式
-const generateRouter = (routes) => {
+// eslint-disable-next-line no-shadow
+const generateRoutes = (routes) => {
   const navigate = useNavigate(); // navigate(to, {replace, state})
   const location = useLocation();
   const params = useParams(); // <Route path="/:path" />
@@ -25,7 +26,7 @@ const generateRouter = (routes) => {
 
   return routes.map((item) => {
     if (item.children) {
-      item.children = generateRouter(item.children);
+      item.children = generateRoutes(item.children);
     }
     if (item.component) {
       item.element = (
@@ -38,4 +39,4 @@ const generateRouter = (routes) => {
   });
 };
 
-export default () => useRoutes(generateRouter(routes));
+export default () => useRoutes(generateRoutes(routes));

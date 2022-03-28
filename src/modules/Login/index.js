@@ -1,13 +1,14 @@
+/* eslint-disable global-require */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Space } from 'antd';
-
-import styles from './index.less';
 
 import router from '@/common/router';
 import Page from '@/components/Page';
 import PlayIcon from '@/components/PlayIcon';
 import { setUserInfo } from '@/store/reducers/user';
+
+import styles from './index.less';
 
 /**
  * 焦点图管理
@@ -33,8 +34,8 @@ class Login extends React.PureComponent {
           <div>
             <PlayIcon className={styles.icon} />
           </div>
-          <img src={require('@/images/logo.png')} />
-          <img src={'images/logo.png'} />
+          <img src={require('@/images/logo.png')} alt="" />
+          <img src="images/logo.png" alt="" />
           <Button onClick={this.onLogin}>登录</Button>
         </Space>
       </Page>

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import styles from './index.less';
-
 import Page from '@/components/Page';
 import PlayIcon from '@/components/PlayIcon';
 

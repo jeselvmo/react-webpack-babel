@@ -29,6 +29,8 @@ Page.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-Page.defaultProps = {};
+Page.defaultProps = {
+  title: '',
+};
 
 export default Page;

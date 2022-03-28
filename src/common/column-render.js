@@ -14,7 +14,7 @@ export default {
     );
   },
   renderImage(text, width = 120, height) {
-    return <Image src={text} width={width} height={height} preview={true} />;
+    return <Image src={text} width={width} height={height} preview />;
   },
   renderGrades(text = [], width) {
     return this.renderText(GRADE.getNameList(text || []).join('、'), width);
