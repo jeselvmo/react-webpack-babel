@@ -2,8 +2,8 @@ import React from 'react';
 
 import styles from './index.less';
 
-import Page from '@/components/Page';
-import PlayIcon from '@/components/PlayIcon';
+import Page from '@/components/page';
+import PlayIcon from '@/components/play-icon';
 
 /**
  * 焦点图管理

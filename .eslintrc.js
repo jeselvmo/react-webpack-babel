@@ -29,6 +29,8 @@ module.exports = {
     'react/require-default-props': 0,
     'react/jsx-props-no-spreading': 0,
     'jsx-a11y/alt-text': 0,
+    'no-plusplus': 0,
+    'prefer-const': 0,
   },
   settings: {
     'import/resolver': 'webpack',

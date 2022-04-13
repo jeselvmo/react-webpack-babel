@@ -17,6 +17,7 @@ class MainLayout extends React.PureComponent {
     { key: '/dashboard', name: '首页2', icon: <HomeOutlined /> }, //
     { key: '/banner', name: '焦点图管理', icon: <AppstoreOutlined /> },
     { key: '/about', name: '焦点图管理', icon: <AppstoreOutlined /> },
+    { key: '/exceljs', name: 'Excel导出', icon: <AppstoreOutlined /> },
   ];
 
   constructor(props) {

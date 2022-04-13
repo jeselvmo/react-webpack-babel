@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import Loading from '@/components/Loading';
+import Loading from '@/components/loading';
 
 const AppUtils = {
   success(msg) {

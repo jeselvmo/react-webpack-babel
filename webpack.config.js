@@ -1,12 +1,12 @@
 const path = require('path');
+// eslint-disable-next-line no-unused-vars
 const webpack = require('webpack'); // webpack核心
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将CSS提取出来，而不是和js混在一起
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin'); // 对CSS进行压缩
-const TerserPlugin = require('terser-webpack-plugin');
-const webpackbar = require('webpackbar'); // 进度条
+// eslint-disable-next-line import/no-unresolved
+const WebpackBarPlugin = require('webpackbar'); // 进度条
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -99,8 +99,8 @@ const webpackConfig = {
           {
             loader: 'file-loader',
             options: {
-              publicPath: 'images',
-              outputPath: 'images',
+              publicPath: 'static/images',
+              outputPath: 'static/images',
               esModule: false,
             },
           },
@@ -123,21 +123,15 @@ const webpackConfig = {
       },
     ],
   },
-  optimization: {
-    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
-  },
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [{ from: 'static' }],
     }),
-    new webpackbar(), // 打包时美化进度条
-    new webpack.DefinePlugin({
-      'process.env': 'prod',
-    }),
+    new WebpackBarPlugin(), // 打包时美化进度条
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[chunkhash:8].css', // 生成的文件名
-      chunkFilename: 'css/[name].[chunkhash:8].chunk.css',
+      filename: 'static/css/[name].[hash:8].css', // 生成的文件名
+      chunkFilename: 'static/css/[name].[chunkhash:8].chunk.css',
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',

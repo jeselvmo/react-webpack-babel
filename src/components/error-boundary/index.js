@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CrashMessage from '@/components/CrashMessage';
+import CrashMessage from '@/components/crash-message';
 
 class ErrorBoundary extends React.PureComponent {
   constructor(props) {

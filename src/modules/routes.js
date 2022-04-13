@@ -5,15 +5,16 @@ import router from '@/common/router';
 const routes = [
   {
     path: '/',
-    component: lazy(() => import('./MainLayout')),
+    component: lazy(() => import('./main-layout')),
     children: [
       { path: '/', element: <Navigate to="/dashboard" /> },
-      { path: '/dashboard', component: lazy(() => import('./Dashboard')), auth: true },
-      { path: '/banner', component: lazy(() => import('./Banner')), auth: true },
-      { path: '/about', component: lazy(() => import('./About')), auth: true },
+      { path: '/dashboard', component: lazy(() => import('./dashboard')), auth: true },
+      { path: '/banner', component: lazy(() => import('./banner')), auth: true },
+      { path: '/about', component: lazy(() => import('./about')), auth: true },
+      { path: '/exceljs', component: lazy(() => import('./excel-js')), auth: true },
     ],
   },
-  { path: '/login', component: lazy(() => import('./Login')) },
+  { path: '/login', component: lazy(() => import('./login')) },
 ];
 
 // 路由处理方式

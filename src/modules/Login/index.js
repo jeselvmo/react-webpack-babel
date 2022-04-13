@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Button, Space } from 'antd';
 
 import router from '@/common/router';
-import Page from '@/components/Page';
-import PlayIcon from '@/components/PlayIcon';
+import Page from '@/components/page';
+import PlayIcon from '@/components/play-icon';
 import { setUserInfo } from '@/store/reducers/user';
 
 import styles from './index.less';

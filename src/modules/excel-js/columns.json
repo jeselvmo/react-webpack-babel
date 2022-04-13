@@ -1,0 +1,16 @@
+[
+  { "label": "教师", "prop": "teacher_name", "width": 10 },
+  { "label": "所属学校", "prop": "school_name", "width": 20 },
+  { "label": "班级", "prop": "class_name", "width": 10 },
+  { "label": "作业名称", "prop": "name", "width": 20 },
+  { "label": "学科", "prop": "subject_name", "width": 10 },
+  { "label": "数据来源", "prop": "source_name", "width": 10 },
+  { "label": "预计作答时长", "prop": "spend_time", "width": 10 },
+  { "label": "应批学生数", "prop": "student_count", "width": 10 },
+  { "label": "实际批学生数", "prop": "submit_student_count", "width": 10 },
+  { "label": "应批试题数", "prop": "question_count", "width": 10 },
+  { "label": "实批试题数", "prop": "submit_question_count", "width": 10 },
+  { "label": "批改率", "prop": "submit_rate", "width": 10 },
+  { "label": "首次批改时间", "prop": "first_time", "width": 20 },
+  { "label": "最后批改时间", "prop": "last_time", "width": 20 }
+]
