@@ -8,15 +8,17 @@ import _ from 'lodash';
 import router from '@/common/router';
 import { clearUserInfo } from '@/store/reducers/user';
 
-import styles from './index.less';
+import './index.less';
 
 const { Header, Sider, Content } = Layout;
 
+const classPrefix = 'g-main-layout';
+
 class MainLayout extends React.PureComponent {
   sliderMenus = [
-    { key: '/dashboard', name: '首页2', icon: <HomeOutlined /> }, //
-    { key: '/banner', name: '焦点图管理', icon: <AppstoreOutlined /> },
-    { key: '/about', name: '焦点图管理', icon: <AppstoreOutlined /> },
+    { key: '/dashboard', name: '首页', icon: <HomeOutlined /> }, //
+    { key: '/about', name: '关于我们', icon: <AppstoreOutlined /> },
+    { key: '/swiper-demo', name: 'Swiper测试', icon: <AppstoreOutlined /> },
   ];
 
   constructor(props) {
@@ -28,7 +30,6 @@ class MainLayout extends React.PureComponent {
 
   onMenuItemClick = (e) => {
     const activeKey = e.key;
-    console.log('🚀 ~ MainLayout ~ this.props', this.props);
     router.navigate(`${activeKey}?id=1`, {
       state: {
         type: 2,
@@ -54,22 +55,21 @@ class MainLayout extends React.PureComponent {
   render() {
     const { activeKey } = this.state;
     const { userInfo } = this.props;
-    console.log('🚀 ~ MainLayout ~ render ~ userInfo', userInfo);
     return (
-      <Layout className={styles.layout}>
-        <Header className={styles.header}>
-          <div className={styles.logo}>react-webpack-babel</div>
-          <div className={styles.userInfo}>
+      <Layout className={classPrefix}>
+        <Header className={`${classPrefix}-header`}>
+          <div className={`${classPrefix}-logo`}>react-webpack-babel</div>
+          <div className={`${classPrefix}-user-info`}>
             <Avatar icon={<UserOutlined />} />
             <Dropdown overlay={this.renderUserMenu()} trigger={['click']}>
-              <div className={styles.userName}>
+              <div className={`${classPrefix}-user-name`}>
                 <span>{_.get(userInfo, 'name')}</span>
                 <DownOutlined />
               </div>
             </Dropdown>
           </div>
         </Header>
-        <Layout className={styles.siderLayout}>
+        <Layout className={`${classPrefix}-sider-layout`}>
           <Sider theme="light" trigger={null}>
             <Menu theme="light" mode="inline" defaultSelectedKeys={[activeKey]} onClick={this.onMenuItemClick}>
               {this.sliderMenus.map((menu) => (
@@ -79,7 +79,7 @@ class MainLayout extends React.PureComponent {
               ))}
             </Menu>
           </Sider>
-          <Content className={styles.content}>
+          <Content className={`${classPrefix}-content`}>
             <Outlet />
           </Content>
         </Layout>

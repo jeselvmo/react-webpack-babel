@@ -4,15 +4,14 @@ import { connect } from 'react-redux';
 import { Button, Space } from 'antd';
 
 import router from '@/common/router';
-import Page from '@/components/Page';
-import PlayIcon from '@/components/PlayIcon';
+import Page from '@/components/page';
+import PlayIcon from '@/components/play-icon';
 import { setUserInfo } from '@/store/reducers/user';
 
-import styles from './index.less';
+import './index.less';
 
-/**
- * 焦点图管理
- */
+const classPrefix = 'g-login';
+
 class Login extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -29,13 +28,12 @@ class Login extends React.PureComponent {
 
   render() {
     return (
-      <Page title="Login">
+      <Page className={classPrefix} title="Login">
         <Space direction="vertical">
           <div>
-            <PlayIcon className={styles.icon} />
+            <PlayIcon />
           </div>
           <img src={require('@/images/logo.png')} alt="" />
-          <img src="images/logo.png" alt="" />
           <Button onClick={this.onLogin}>登录</Button>
         </Space>
       </Page>

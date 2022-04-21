@@ -1,12 +1,11 @@
 import React from 'react';
+import Page from '@/components/page';
+import PlayIcon from '@/components/play-icon';
+import './index.less';
 
-import Page from '@/components/Page';
-import PlayIcon from '@/components/PlayIcon';
+const classPrefix = 'g-dashboard';
 
-/**
- * 焦点图管理
- */
-class Home extends React.PureComponent {
+class Dashboard extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -16,7 +15,7 @@ class Home extends React.PureComponent {
 
   render() {
     return (
-      <Page title="dashboard">
+      <Page className={classPrefix} title="dashboard">
         <PlayIcon />
         <PlayIcon />
       </Page>
@@ -24,4 +23,4 @@ class Home extends React.PureComponent {
   }
 }
 
-export default Home;
+export default Dashboard;

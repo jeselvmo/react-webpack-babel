@@ -1,0 +1,57 @@
+@class-prefix: ~'g-main-layout';
+
+.@{class-prefix} {
+  height: 100%;
+
+  &-sider-layout {
+    height: 100%;
+    .ant-menu {
+      height: 100%;
+    }
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px 0 30px;
+  }
+
+  &-content {
+    min-height: 280px;
+    background: #ffffff;
+    overflow: hidden;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  &-logo {
+    color: #ffffff;
+    font-size: 24px;
+  }
+
+  &-user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-user-name {
+    color: #ffffff;
+    font-size: 16px;
+    margin: 0 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .anticon {
+      font-size: 14px;
+      margin-left: 3px;
+      margin-top: 3px;
+    }
+  }
+}

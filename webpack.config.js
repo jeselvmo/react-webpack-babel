@@ -83,10 +83,6 @@ const webpackConfig = {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
-              modules: {
-                exportLocalsConvention: 'camelCase',
-                localIdentName: '[folder]__[local]___[hash:base64:5]',
-              },
             },
           },
           'postcss-loader',

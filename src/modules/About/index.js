@@ -1,13 +1,12 @@
 import React from 'react';
 
-import styles from './index.less';
+import './index.less';
 
-import Page from '@/components/Page';
-import PlayIcon from '@/components/PlayIcon';
+import Page from '@/components/page';
+import PlayIcon from '@/components/play-icon';
 
-/**
- * 焦点图管理
- */
+const classPrefix = 'g-about';
+
 class Banner extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ class Banner extends React.PureComponent {
 
   render() {
     return (
-      <Page title="About">
+      <Page className={classPrefix} title="About">
         <PlayIcon />
       </Page>
     );
