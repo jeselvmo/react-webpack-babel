@@ -28,9 +28,13 @@ module.exports = {
     'react/forbid-prop-types': 0,
     'react/require-default-props': 0,
     'react/jsx-props-no-spreading': 0,
+    'react/no-array-index-key': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
     'jsx-a11y/alt-text': 0,
     'no-plusplus': 0,
     'prefer-const': 0,
+    'global-require': 0,
   },
   settings: {
     'import/resolver': 'webpack',

@@ -1,18 +1,14 @@
-/* eslint-disable global-require */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Space } from 'antd';
-
 import router from '@/common/router';
 import Page from '@/components/page';
 import PlayIcon from '@/components/play-icon';
 import { setUserInfo } from '@/store/reducers/user';
+import './index.less';
 
-import styles from './index.less';
+const classPrefix = 'g-login-page';
 
-/**
- * 焦点图管理
- */
 class Login extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -29,14 +25,15 @@ class Login extends React.PureComponent {
 
   render() {
     return (
-      <Page title="Login">
+      <Page className={classPrefix} title="Login">
         <Space direction="vertical">
           <div>
-            <PlayIcon className={styles.icon} />
+            <PlayIcon className="icon" />
           </div>
           <img src={require('@/images/logo.png')} alt="" />
-          <img src="images/logo.png" alt="" />
-          <Button onClick={this.onLogin}>登录</Button>
+          <Button type="primary" onClick={this.onLogin}>
+            登录
+          </Button>
         </Space>
       </Page>
     );

@@ -12,7 +12,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const webpackConfig = {
   mode: isProd ? 'production' : 'development',
-  devtool: isProd ? false : 'cheap-module-source-map',
+  devtool: isProd ? false : 'eval-cheap-module-source-map',
   entry: [
     './src/index.js', // your app's entry point
   ],
@@ -25,7 +25,6 @@ const webpackConfig = {
     extensions: ['.js', '.jsx', '.css', '.less'],
     alias: {
       '@': path.resolve(__dirname, 'src/'),
-      styles: path.resolve(__dirname, 'src/styles/'),
     },
   },
   module: {
@@ -38,7 +37,7 @@ const webpackConfig = {
           babelrc: false,
           presets: ['@babel/preset-env', '@babel/preset-react'],
           plugins: [
-            ['@babel/plugin-transform-runtime'], //
+            // ['@babel/plugin-transform-runtime'], //
             ['import', { libraryName: 'antd', style: true }],
           ],
         },
@@ -71,27 +70,8 @@ const webpackConfig = {
       },
       {
         test: /\.less$/,
-        include: [path.resolve(__dirname, 'src/styles')],
+        exclude: /(antd|antd-mobile)/,
         use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
-      },
-      {
-        test: /\.less$/,
-        exclude: [/(antd|antd-mobile)/, path.resolve(__dirname, 'src/styles')],
-        use: [
-          isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              modules: {
-                exportLocalsConvention: 'camelCase',
-                localIdentName: '[folder]__[local]___[hash:base64:5]',
-              },
-            },
-          },
-          'postcss-loader',
-          'less-loader',
-        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

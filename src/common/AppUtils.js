@@ -1,5 +1,4 @@
 import { message } from 'antd';
-import Loading from '@/components/loading';
 
 const AppUtils = {
   success(msg) {
@@ -10,18 +9,6 @@ const AppUtils = {
   },
   warning(msg) {
     message.warning(msg);
-  },
-  /**
-   * 显示Loading
-   */
-  showLoading() {
-    Loading.showLoading();
-  },
-  /**
-   * 隐藏Loading
-   */
-  hideLoading() {
-    Loading.hideLoading();
   },
 };
 

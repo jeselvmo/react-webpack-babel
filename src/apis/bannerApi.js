@@ -1,4 +1,4 @@
-import request from '@/common/request';
+import request from '@/apis/request';
 
 /**
  * 焦点图管理

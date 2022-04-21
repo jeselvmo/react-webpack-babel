@@ -8,7 +8,7 @@ import _ from 'lodash';
 import router from '@/common/router';
 import { clearUserInfo } from '@/store/reducers/user';
 
-import styles from './index.less';
+import './index.less';
 
 const { Header, Sider, Content } = Layout;
 
@@ -18,6 +18,7 @@ class MainLayout extends React.PureComponent {
     { key: '/banner', name: '焦点图管理', icon: <AppstoreOutlined /> },
     { key: '/about', name: '焦点图管理', icon: <AppstoreOutlined /> },
     { key: '/exceljs', name: 'Excel导出', icon: <AppstoreOutlined /> },
+    { key: '/swiper-demo', name: 'Swiper测试', icon: <AppstoreOutlined /> },
   ];
 
   constructor(props) {

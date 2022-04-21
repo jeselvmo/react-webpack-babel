@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Velocity from 'velocity-animate';
-
-import styles from './index.less';
+import './index.less';
 
 import playIcon from './play.svg';
+
+const classPrefix = 'g-play-icon';
 
 class PlayIcon extends React.PureComponent {
   onSvgLoad = (e) => {
@@ -28,7 +29,7 @@ class PlayIcon extends React.PureComponent {
 
   render() {
     const { className } = this.props;
-    return <object className={classNames(styles.playIcon, className)} type="image/svg+xml" data={playIcon} onLoad={this.onSvgLoad} />;
+    return <object className={classNames(classPrefix, className)} type="image/svg+xml" data={playIcon} onLoad={this.onSvgLoad} />;
   }
 }
 

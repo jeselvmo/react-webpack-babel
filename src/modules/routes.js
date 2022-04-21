@@ -3,17 +3,18 @@ import { useRoutes, Navigate, useLocation, useNavigate, useParams } from 'react-
 import router from '@/common/router';
 
 const routes = [
-  {
-    path: '/',
-    component: lazy(() => import('./main-layout')),
-    children: [
-      { path: '/', element: <Navigate to="/dashboard" /> },
-      { path: '/dashboard', component: lazy(() => import('./dashboard')), auth: true },
-      { path: '/banner', component: lazy(() => import('./banner')), auth: true },
-      { path: '/about', component: lazy(() => import('./about')), auth: true },
-      { path: '/exceljs', component: lazy(() => import('./excel-js')), auth: true },
-    ],
-  },
+  // {
+  //   path: '/',
+  //   component: lazy(() => import('./main-layout')),
+  //   children: [
+  //     { path: '/', element: <Navigate to="/dashboard" /> },
+  //     { path: '/dashboard', component: lazy(() => import('./dashboard')), auth: true },
+  //     { path: '/banner', component: lazy(() => import('./banner')), auth: true },
+  //     { path: '/about', component: lazy(() => import('./about')), auth: true },
+  //     { path: '/exceljs', component: lazy(() => import('./excel-js')), auth: true },
+  //     { path: '/swiper-demo', component: lazy(() => import('./swiper-demo')), auth: true },
+  //   ],
+  // },
   { path: '/login', component: lazy(() => import('./login')) },
 ];
 
