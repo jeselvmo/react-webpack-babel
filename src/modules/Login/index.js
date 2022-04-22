@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Space } from 'antd';
@@ -16,6 +15,7 @@ class Login extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
+    this.onLogin();
   }
 
   onLogin = () => {

@@ -27,7 +27,7 @@ instance.interceptors.response.use(
     }
     console.log('config, response', res.config, res.data);
 
-    const data = res.data;
+    const { data } = res;
     if (data.result === 0) {
       return data.data;
     }

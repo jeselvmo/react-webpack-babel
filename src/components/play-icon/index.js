@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Velocity from 'velocity-animate';
 import './index.less';
-import playIcon from './play.svg';
+import playIcon from './play.xml';
 
 const classPrefix = 'g-play-icon';
 

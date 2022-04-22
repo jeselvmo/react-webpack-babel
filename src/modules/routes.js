@@ -3,6 +3,7 @@ import { useRoutes, Navigate, useLocation, useNavigate, useParams } from 'react-
 import router from '@/common/router';
 
 const routes = [
+  { path: '/login', component: lazy(() => import('./login')) },
   {
     path: '/',
     component: lazy(() => import('./main-layout')),
@@ -13,7 +14,6 @@ const routes = [
       { path: '/swiper-demo', component: lazy(() => import('./swiper-demo')), auth: true },
     ],
   },
-  { path: '/login', component: lazy(() => import('./login')) },
 ];
 
 // 路由处理方式
